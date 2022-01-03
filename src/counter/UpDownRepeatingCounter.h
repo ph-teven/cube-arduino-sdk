@@ -1,16 +1,17 @@
-#ifndef LED_CONTROLLER_UPDOWNCOUNTER_H
-#define LED_CONTROLLER_UPDOWNCOUNTER_H
+#ifndef CUBE_ARDUINO_SDK_UPDOWNREPEATINGCOUNTER_H
+#define CUBE_ARDUINO_SDK_UPDOWNREPEATINGCOUNTER_H
 
 #include <functional>
+#include "Counter.h"
 
-class UpDownCounter {
+class UpDownRepeatingCounter : public Counter {
 
 public:
     /**
      * @param start Inclusive
      * @param end Exclusive
      */
-    explicit UpDownCounter(
+    explicit UpDownRepeatingCounter(
             int start,
             int end,
             std::function<void(int)> onChange = [](int) {},
@@ -22,13 +23,13 @@ public:
             _start(start),
             _end(end) {}
 
-    void increment();
+    void increment() override;
 
-    int getValue();
+    int getValue() override;
 
-    void setValue(int value);
+    void setValue(int value) override;
 
-    int getEnd();
+    int getEnd() override;
 
 private:
     std::function<void()> _onRepeat;
@@ -40,4 +41,4 @@ private:
 };
 
 
-#endif //LED_CONTROLLER_UPDOWNCOUNTER_H
+#endif //CUBE_ARDUINO_SDK_UPDOWNREPEATINGCOUNTER_H

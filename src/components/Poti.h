@@ -1,14 +1,15 @@
-#ifndef LED_CONTROLLER_POTI_H
-#define LED_CONTROLLER_POTI_H
+#ifndef CUBE_ARDUINO_SDK_POTI_H
+#define CUBE_ARDUINO_SDK_POTI_H
 
 #include <functional>
 #include <utility>
 #include "platform/Platform.h"
 #include "ValueRange.h"
+#include "Component.h"
 
 const auto analogRange = Range{0, 1023};
 
-class Poti {
+class Poti : public Component {
 public:
     explicit Poti(Platform *platform, int pin, Range range = analogRange, std::function<void(int)> onChanged = [](int) {}) :
             _platform(platform),
@@ -22,7 +23,7 @@ public:
 
     int getValue();
 
-    void update();
+    void update() override;
 
 private:
     Platform *_platform;
@@ -33,4 +34,4 @@ private:
     int _mappedValue = 0;
 };
 
-#endif //LED_CONTROLLER_POTI_H
+#endif //CUBE_ARDUINO_SDK_POTI_H

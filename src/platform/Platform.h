@@ -1,6 +1,6 @@
 
-#ifndef LED_CONTORLLER_PLATFORM_H
-#define LED_CONTORLLER_PLATFORM_H
+#ifndef CUBE_ARDUINO_SDK_PLATFORM_H
+#define CUBE_ARDUINO_SDK_PLATFORM_H
 
 #define HIGH 0x1
 #define LOW  0x0
@@ -39,5 +39,4 @@ public:
     }
 };
 
-
-#endif //LED_CONTORLLER_PLATFORM_H
+#endif //CUBE_ARDUINO_SDK_PLATFORM_H

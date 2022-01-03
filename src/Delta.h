@@ -1,5 +1,5 @@
-#ifndef LED_CONTROLLER_DELTA_H
-#define LED_CONTROLLER_DELTA_H
+#ifndef CUBE_ARDUINO_SDK_DELTA_H
+#define CUBE_ARDUINO_SDK_DELTA_H
 
 #include "platform/Platform.h"
 
@@ -16,4 +16,4 @@ private:
     unsigned int _lastUpdate;
 };
 
-#endif //LED_CONTROLLER_DELTA_H
+#endif //CUBE_ARDUINO_SDK_DELTA_H

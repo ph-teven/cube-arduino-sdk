@@ -1,11 +1,12 @@
-#ifndef LED_CONTROLLER_SWITCH_H
-#define LED_CONTROLLER_SWITCH_H
+#ifndef CUBE_ARDUINO_SDK_SWITCH_H
+#define CUBE_ARDUINO_SDK_SWITCH_H
 
 #include <functional>
 #include <utility>
+#include "Component.h"
 #include "platform/Platform.h"
 
-class Switch {
+class Switch : public Component {
 
 public:
     explicit Switch(Platform *platform, int pin, std::function<void(bool)> onToggle = [](bool) {})
@@ -15,7 +16,7 @@ public:
         platform->PinMode(_pin, INPUT_PULLUP);
     }
 
-    void update();
+    void update() override;
 
     bool isOn();
 
@@ -27,4 +28,4 @@ private:
 };
 
 
-#endif //LED_CONTROLLER_SWITCH_H
+#endif //CUBE_ARDUINO_SDK_SWITCH_H

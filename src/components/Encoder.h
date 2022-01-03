@@ -1,10 +1,11 @@
-#ifndef LED_CONTROLLER_ENCODER_H
-#define LED_CONTROLLER_ENCODER_H
+#ifndef CUBE_ARDUINO_SDK_ENCODER_H
+#define CUBE_ARDUINO_SDK_ENCODER_H
 
 #include <functional>
 #include <utility>
 #include "platform/Platform.h"
 #include "ValueRange.h"
+#include "Component.h"
 
 // TODO should have min/max and internal state
 
@@ -14,7 +15,7 @@ struct EncoderPins {
     int sw; // button
 };
 
-class Encoder {
+class Encoder : public Component {
 
 public:
     explicit Encoder(
@@ -41,7 +42,7 @@ public:
         _pressed = _platform->DigitalRead(pins.sw) == LOW;
     };
 
-    void update();
+    void update() override;
 
     int getValue();
 
@@ -61,4 +62,4 @@ private:
 };
 
 
-#endif //LED_CONTROLLER_ENCODER_H
+#endif //CUBE_ARDUINO_SDK_ENCODER_H

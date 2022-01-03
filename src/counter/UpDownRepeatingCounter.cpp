@@ -1,6 +1,6 @@
-#include "UpDownCounter.h"
+#include "UpDownRepeatingCounter.h"
 
-void UpDownCounter::increment() {
+void UpDownRepeatingCounter::increment() {
     // 0 1 2 3 2 1 0
     if (_countingUp) {
         _current += 1;
@@ -20,15 +20,15 @@ void UpDownCounter::increment() {
     _onChange(_current);
 }
 
-int UpDownCounter::getValue() {
+int UpDownRepeatingCounter::getValue() {
     return _current;
 }
 
-void UpDownCounter::setValue(int value) {
+void UpDownRepeatingCounter::setValue(int value) {
     _current = value;
     _onChange(_current);
 }
 
-int UpDownCounter::getEnd() {
+int UpDownRepeatingCounter::getEnd() {
     return _end;
 }

@@ -1,11 +1,12 @@
-#ifndef LED_CONTROLLER_BUTTON_H
-#define LED_CONTROLLER_BUTTON_H
+#ifndef CUBE_ARDUINO_SDK_BUTTON_H
+#define CUBE_ARDUINO_SDK_BUTTON_H
 
 #include <functional>
 #include <utility>
 #include "platform/Platform.h"
+#include "Component.h"
 
-class Button {
+class Button : public Component {
 
 public:
     explicit Button(Platform *platform, int pin, std::function<void()> onPressed)
@@ -15,7 +16,7 @@ public:
         _platform->PinMode(_pin, INPUT_PULLUP);
     }
 
-    void update();
+    void update() override;
 
 private:
     Platform *_platform;
@@ -24,4 +25,4 @@ private:
     bool _pressed = false;
 };
 
-#endif //LED_CONTROLLER_BUTTON_H
+#endif //CUBE_ARDUINO_SDK_BUTTON_H

@@ -1,5 +1,5 @@
-#ifndef LED_CONTROLLER_INTERVAL_H
-#define LED_CONTROLLER_INTERVAL_H
+#ifndef CUBE_ARDUINO_SDK_INTERVAL_H
+#define CUBE_ARDUINO_SDK_INTERVAL_H
 
 #include <functional>
 
@@ -26,13 +26,11 @@ public:
 
     unsigned int getDuration();
 
-
 private:
     unsigned int _duration;
     std::function<void()> _onFinished;
     unsigned int _expiredTime = 0;
-
 };
 
 
-#endif //LED_CONTROLLER_INTERVAL_H
+#endif //CUBE_ARDUINO_SDK_INTERVAL_H

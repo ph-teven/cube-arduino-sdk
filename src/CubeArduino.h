@@ -11,12 +11,20 @@
 #include "components/Switch.h"
 
 #include "counter/RepeatingCounter.h"
-#include "counter/RepeatingIntervalCounter.h"
-#include "counter/UpDownCounter.h"
+#include "interval-counter/RepeatingIntervalCounter.h"
+#include "counter/UpDownRepeatingCounter.h"
 
-#include "timing/Delta.h"
-#include "timing/Interval.h"
+#include "Delta.h"
+#include "interval/Interval.h"
 
 #include "ValueRange.h"
+
+Platform *arduinoPlatform() {
+    return new ArduinoPlatform();
+}
+
+Platform *testPlatform() {
+    return new TestPlatform();
+}
 
 #endif //CUBE_ARDUINO_SDK_CUBEARDUINO_H

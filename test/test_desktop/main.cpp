@@ -6,7 +6,7 @@ void test_UpDownCounter() {
     bool finished = false;
     int foo = -1;
 
-    auto counter = new UpDownCounter(
+    auto counter = new UpDownRepeatingCounter(
             0,
             3,
             [&foo](int value) {

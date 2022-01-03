@@ -1,10 +1,11 @@
-#ifndef LED_CONTROLLER_REPEATINGCOUNTER_H
-#define LED_CONTROLLER_REPEATINGCOUNTER_H
+#ifndef CUBE_ARDUINO_SDK_REPEATINGCOUNTER_H
+#define CUBE_ARDUINO_SDK_REPEATINGCOUNTER_H
 
 #include <functional>
 #include <utility>
+#include "Counter.h"
 
-class RepeatingCounter {
+class RepeatingCounter : public Counter {
 public:
 
     /**
@@ -25,17 +26,17 @@ public:
             _start(start),
             _end(end - 1) {}
 
-    void increment();
+    void increment() override;
 
-    int getValue();
+    int getValue() override;
 
-    void setValue(int value);
+    void setValue(int value) override;
 
-    int getStep();
+    int getStep() override;
 
-    int getEnd();
+    int getEnd() override;
 
-    void setStep(int step);
+    void setStep(int step) override;
 
 private:
     std::function<void()> _onRepeat;
@@ -47,4 +48,4 @@ private:
 };
 
 
-#endif //LED_CONTROLLER_REPEATINGCOUNTER_H
+#endif //CUBE_ARDUINO_SDK_REPEATINGCOUNTER_H

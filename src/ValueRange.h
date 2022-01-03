@@ -1,7 +1,7 @@
 #include "platform/Platform.h"
 
-#ifndef LED_CONTROLLER_PARAMETER_H
-#define LED_CONTROLLER_PARAMETER_H
+#ifndef CUBE_ARDUINO_SDK_VALUE_RANGE_H
+#define CUBE_ARDUINO_SDK_VALUE_RANGE_H
 
 struct Range {
     int min;
@@ -23,4 +23,4 @@ private:
     Range _range;
 };
 
-#endif //LED_CONTROLLER_PARAMETER_H
+#endif //CUBE_ARDUINO_SDK_VALUE_RANGE_H
