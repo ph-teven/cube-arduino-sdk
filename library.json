@@ -1,0 +1,25 @@
+{
+  "name": "CubeArduinoSDK",
+  "description": "Useful components for writing arduino applications",
+  "authors": [
+    {
+      "name": "Stefan Beier",
+      "maintainer": true
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ph-teven/cube-arduino-sdk"
+  },
+  "version": "1.0.14",
+  "frameworks": "arduino",
+  "platforms": "atmelavr, atmelsam, freescalekinetis, nordicnrf51, nxplpc, ststm32, teensy, espressif8266, espressif32, nordicnrf52",
+  "export": {
+    "exclude": [
+      "test",
+      ".idea",
+      ".gitignore"
+    ]
+  },
+  "headers": "CubeArduino.h"
+}

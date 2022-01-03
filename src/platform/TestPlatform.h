@@ -1,0 +1,45 @@
+#ifndef LED_CONTORLLER_TESTPLATFORM_H
+#define LED_CONTORLLER_TESTPLATFORM_H
+
+#include "Platform.h"
+
+class TestPlatform : public Platform {
+public:
+    explicit TestPlatform();
+
+    unsigned int Millis() override;
+
+    void PinMode(int pin, int mode) override;
+
+    int DigitalRead(int pin) override;
+
+    void DigitalWrite(int pin, int value) override;
+
+    int AnalogRead(int pin) override;
+
+    void AnalogWrite(int pin, int value) override;
+
+    void PrintLn(const char *value) override;
+
+    void PrintLn(int value) override;
+
+    void setTime(int time);
+
+private:
+    int _pinModes[10]{
+            INPUT, INPUT, INPUT, INPUT, INPUT,
+            INPUT, INPUT, INPUT, INPUT, INPUT,
+    };
+    int _digitalValues[10]{
+            LOW, LOW, LOW, LOW, LOW,
+            LOW, LOW, LOW, LOW, LOW,
+    };
+    int _analogValues[10]{
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0
+    };
+    int _time = 0;
+};
+
+
+#endif //LED_CONTORLLER_TESTPLATFORM_H
