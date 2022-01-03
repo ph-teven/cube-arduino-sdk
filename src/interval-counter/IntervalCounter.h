@@ -2,7 +2,7 @@
 #define CUBE_ARDUINO_SDK_INTERVAL_COUNTER_H
 
 #include "counter/Counter.h"
-#include "interval/IntervalInterface.h"
+#include "interval/Interval.h"
 
 class IntervalCounter {
 public:

@@ -11,14 +11,16 @@
     "type": "git",
     "url": "https://github.com/ph-teven/cube-arduino-sdk"
   },
-  "version": "1.0.18",
+  "version": "1.0.19",
   "frameworks": "arduino",
   "platforms": "atmelavr, atmelsam, freescalekinetis, nordicnrf51, nxplpc, ststm32, teensy, espressif8266, espressif32, nordicnrf52",
   "export": {
     "exclude": [
       "test",
       ".idea",
-      ".gitignore"
+      ".gitignore",
+      "src/main.cpp",
+      "cmake-build-native"
     ]
   },
   "headers": "CubeArduino.h"

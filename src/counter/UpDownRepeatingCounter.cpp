@@ -32,3 +32,10 @@ void UpDownRepeatingCounter::setValue(int value) {
 int UpDownRepeatingCounter::getEnd() {
     return _end;
 }
+
+int UpDownRepeatingCounter::getStep() {
+    return 1;
+}
+
+void UpDownRepeatingCounter::setStep(int step) {
+}

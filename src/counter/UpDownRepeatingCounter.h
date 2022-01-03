@@ -31,6 +31,10 @@ public:
 
     int getEnd() override;
 
+    int getStep() override;
+
+    void setStep(int step) override;
+
 private:
     std::function<void()> _onRepeat;
     std::function<void(int)> _onChange;
