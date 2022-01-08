@@ -17,17 +17,9 @@
 #include "interval-counter/UpDownRepeatingIntervalCounter.h"
 
 #include "platform/ArduinoPlatform.h"
-#include "platform/TestPlatform.h"
+#include "../test/TestPlatform.h"
 
 #include "Delta.h"
 #include "ValueRange.h"
-
-Platform *arduinoPlatform() {
-    return new ArduinoPlatform();
-}
-
-Platform *testPlatform() {
-    return new TestPlatform();
-}
 
 #endif //CUBE_ARDUINO_SDK_CUBEARDUINO_H

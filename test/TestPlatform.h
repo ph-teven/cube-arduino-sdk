@@ -1,23 +1,23 @@
 #ifndef CUBE_ARDUINO_SDK_TESTPLATFORM_H
 #define CUBE_ARDUINO_SDK_TESTPLATFORM_H
 
-#include "Platform.h"
+#include "platform/Platform.h"
 
 class TestPlatform : public Platform {
 public:
     explicit TestPlatform();
 
-    unsigned int Millis() override;
+    unsigned long Millis() override;
 
-    void PinMode(int pin, int mode) override;
+    void PinMode(unsigned char pin, unsigned char mode) override;
 
-    int DigitalRead(int pin) override;
+    int DigitalRead(unsigned char pin) override;
 
-    void DigitalWrite(int pin, int value) override;
+    void DigitalWrite(unsigned char pin, unsigned char value) override;
 
-    int AnalogRead(int pin) override;
+    int AnalogRead(unsigned char pin) override;
 
-    void AnalogWrite(int pin, int value) override;
+    void AnalogWrite(unsigned char pin, int value) override;
 
     void setTime(int time);
 

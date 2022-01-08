@@ -1,28 +1,29 @@
 #include "ArduinoPlatform.h"
+#include "Externals.h"
 
 ArduinoPlatform::ArduinoPlatform() = default;
 
-int ArduinoPlatform::DigitalRead(int pin) {
+int ArduinoPlatform::DigitalRead(unsigned char pin) {
     return digitalRead(pin);
 }
 
-void ArduinoPlatform::DigitalWrite(int pin, int value) {
+void ArduinoPlatform::DigitalWrite(unsigned char pin, unsigned char value) {
     digitalWrite(pin, value);
 }
 
-void ArduinoPlatform::PinMode(int pin, int mode) {
+void ArduinoPlatform::PinMode(unsigned char pin, unsigned char mode) {
     pinMode(pin, mode);
 }
 
-unsigned int ArduinoPlatform::Millis() {
+unsigned long ArduinoPlatform::Millis() {
     return millis();
 }
 
-int ArduinoPlatform::AnalogRead(int pin) {
+int ArduinoPlatform::AnalogRead(unsigned char pin) {
     return analogRead(pin);
 }
 
-void ArduinoPlatform::AnalogWrite(int pin, int value) {
+void ArduinoPlatform::AnalogWrite(unsigned char pin, int value) {
     analogWrite(pin, value);
 }
 

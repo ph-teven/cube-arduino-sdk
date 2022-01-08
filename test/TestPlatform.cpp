@@ -2,7 +2,7 @@
 
 TestPlatform::TestPlatform() = default;
 
-int TestPlatform::DigitalRead(int pin) {
+int TestPlatform::DigitalRead(unsigned char pin) {
     bool isPullup = _pinModes[pin] == INPUT_PULLUP;
 
     if (isPullup && _digitalValues[pin] == HIGH) {
@@ -16,15 +16,15 @@ int TestPlatform::DigitalRead(int pin) {
     return _digitalValues[pin];
 }
 
-void TestPlatform::DigitalWrite(int pin, int value) {
+void TestPlatform::DigitalWrite(unsigned char pin, unsigned char value) {
     _digitalValues[pin] = value;
 }
 
-void TestPlatform::PinMode(int pin, int mode) {
+void TestPlatform::PinMode(unsigned char pin, unsigned char mode) {
     _pinModes[pin] = mode;
 }
 
-unsigned int TestPlatform::Millis() {
+unsigned long TestPlatform::Millis() {
     return _time;
 }
 
@@ -32,10 +32,10 @@ void TestPlatform::setTime(int time) {
     _time = time;
 }
 
-int TestPlatform::AnalogRead(int pin) {
+int TestPlatform::AnalogRead(unsigned char pin) {
     return _analogValues[pin];
 }
 
-void TestPlatform::AnalogWrite(int pin, int value) {
+void TestPlatform::AnalogWrite(unsigned char pin, int value) {
     _analogValues[pin] = value;
 }

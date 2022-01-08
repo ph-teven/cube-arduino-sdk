@@ -17,17 +17,17 @@ auto max(const T &a, const L &b) -> decltype((b < a) ? b : a) { return (a < b) ?
 class Platform {
 
 public:
-    virtual unsigned int Millis() = 0;
+    virtual unsigned long Millis() = 0;
 
-    virtual void PinMode(int pin, int mode) = 0;
+    virtual void PinMode(unsigned char pin, unsigned char mode) = 0;
 
-    virtual int DigitalRead(int pin) = 0;
+    virtual int DigitalRead(unsigned char pin) = 0;
 
-    virtual void DigitalWrite(int pin, int value) = 0;
+    virtual void DigitalWrite(unsigned char pin, unsigned char value) = 0;
 
-    virtual int AnalogRead(int pin) = 0;
+    virtual int AnalogRead(unsigned char pin) = 0;
 
-    virtual void AnalogWrite(int pin, int value) = 0;
+    virtual void AnalogWrite(unsigned char pin, int value) = 0;
 
     static long Map(long x, long in_min, long in_max, long out_min, long out_max) {
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;

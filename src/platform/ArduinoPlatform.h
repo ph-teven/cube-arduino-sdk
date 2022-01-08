@@ -3,34 +3,21 @@
 
 #include "Platform.h"
 
-extern int digitalRead(int pin);
-
-extern void digitalWrite(int pin, int value);
-
-extern void pinMode(int pin, int mode);
-
-extern int millis();
-
-extern int analogRead(int pin);
-
-extern void analogWrite(int pin, int value);
-
-
 class ArduinoPlatform : public Platform {
 public:
     explicit ArduinoPlatform();
 
-    unsigned int Millis() override;
+    unsigned long Millis() override;
 
-    void PinMode(int pin, int mode) override;
+    void PinMode(unsigned char pin, unsigned char mode) override;
 
-    int DigitalRead(int pin) override;
+    int DigitalRead(unsigned char pin) override;
 
-    void DigitalWrite(int pin, int value) override;
+    void DigitalWrite(unsigned char pin, unsigned char value) override;
 
-    int AnalogRead(int pin) override;
+    int AnalogRead(unsigned char pin) override;
 
-    void AnalogWrite(int pin, int value) override;
+    void AnalogWrite(unsigned char pin, int value) override;
 };
 
 

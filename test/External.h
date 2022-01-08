@@ -8,10 +8,10 @@ extern int digitalRead(int pin) {
 extern void digitalWrite(int pin, int value) {
 }
 
-extern void pinMode(int pin, int mode) {
+extern void pinMode(unsigned char pin, int mode) {
 }
 
-extern int millis() {
+extern unsigned long millis() {
     return 0;
 }
 
