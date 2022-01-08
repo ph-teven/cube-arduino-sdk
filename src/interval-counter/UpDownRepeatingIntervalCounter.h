@@ -2,6 +2,7 @@
 #define CUBE_ARDUINO_SDK_UPDOWNREPEATINGINTERVALCOUNTER_H
 
 #include <functional>
+#include <utility>
 #include "counter/RepeatingCounter.h"
 #include "interval/BasicInterval.h"
 #include "IntervalCounter.h"
@@ -17,16 +18,16 @@ public:
             unsigned int duration,
             int start,
             int end,
-            unsigned int step,
-            const std::function<void(int)> &onChange,
-            const std::function<void()> &onRepeat
+            unsigned int step = 1,
+            std::function<void(int)> onChange = [](int) {},
+            std::function<void()> onRepeat = [] {}
     ) : IntervalCounter(
             new UpDownRepeatingCounter(
                     start,
                     end,
                     step,
-                    onChange,
-                    onRepeat
+                    std::move(onChange),
+                    std::move(onRepeat)
             ),
             new BasicInterval(
                     duration,

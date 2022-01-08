@@ -16,7 +16,7 @@ public:
     explicit UpDownRepeatingCounter(
             int start,
             int end,
-            unsigned int step,
+            unsigned int step = 1,
             std::function<void(int)> onChange = [](int) {},
             std::function<void()> onRepeat = [] {}
     ) :
