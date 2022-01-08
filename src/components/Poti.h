@@ -7,23 +7,23 @@
 #include "ValueRange.h"
 #include "Component.h"
 
-const auto analogRange = Range{0, 1023};
+const auto range10Bit = Range{0, 1023};
 
 class Poti : public Component {
 public:
-    explicit Poti(Platform *platform, int pin, Range range = analogRange, std::function<void(int)> onChanged = [](int) {}) :
+    explicit Poti(Platform *platform, int pin, Range range, std::function<void(int)> onChanged) :
             _platform(platform),
             _onChanged(std::move(onChanged)),
             _pin(pin),
             _range(range) {
 
         _value = _platform->AnalogRead(_pin);
-        _mappedValue = Platform::Map(_value, analogRange.min, analogRange.max, _range.min, _range.max);
+        _mappedValue = Platform::Map(_value, range10Bit.min, range10Bit.max, _range.min, _range.max);
     }
 
-    int getValue();
+    int getValue() const;
 
-    void update() override;
+    void update(unsigned int delta) override;
 
 private:
     Platform *_platform;

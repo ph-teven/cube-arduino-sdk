@@ -10,12 +10,12 @@
 #include "counter/RepeatingCounter.h"
 #include "counter/UpDownRepeatingCounter.h"
 
-#include "interval/Interval.h"
+#include "interval/BasicInterval.h"
 
 #include "interval-counter/IntervalCounter.h"
 #include "interval-counter/RepeatingIntervalCounter.h"
+#include "interval-counter/UpDownRepeatingIntervalCounter.h"
 
-#include "platform/Platform.h"
 #include "platform/ArduinoPlatform.h"
 #include "platform/TestPlatform.h"
 

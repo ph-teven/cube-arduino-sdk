@@ -16,7 +16,7 @@ public:
         _platform->PinMode(_pin, INPUT_PULLUP);
     }
 
-    void update() override;
+    void update(unsigned int delta) override;
 
 private:
     Platform *_platform;

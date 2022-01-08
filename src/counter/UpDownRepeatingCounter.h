@@ -4,6 +4,8 @@
 #include <functional>
 #include "Counter.h"
 
+// goes like this 0 1 2 3 2 1 0
+
 class UpDownRepeatingCounter : public Counter {
 
 public:
@@ -14,6 +16,7 @@ public:
     explicit UpDownRepeatingCounter(
             int start,
             int end,
+            unsigned int step,
             std::function<void(int)> onChange = [](int) {},
             std::function<void()> onRepeat = [] {}
     ) :
@@ -21,7 +24,8 @@ public:
             _onChange(std::move(onChange)),
             _current(start),
             _start(start),
-            _end(end) {}
+            _end(end),
+            _step(step) {}
 
     void increment() override;
 
@@ -42,6 +46,7 @@ private:
     int _current = 0;
     int _start;
     int _end;
+    unsigned int _step;
 };
 
 

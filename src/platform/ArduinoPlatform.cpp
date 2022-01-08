@@ -26,11 +26,3 @@ void ArduinoPlatform::AnalogWrite(int pin, int value) {
     analogWrite(pin, value);
 }
 
-void ArduinoPlatform::PrintLn(const char *value) {
-    Serial.println(value);
-}
-
-void ArduinoPlatform::PrintLn(int value) {
-    Serial.println(value);
-}
-

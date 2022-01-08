@@ -1,36 +1,19 @@
 #ifndef CUBE_ARDUINO_SDK_INTERVAL_H
 #define CUBE_ARDUINO_SDK_INTERVAL_H
 
-#include <functional>
+#include "Updatable.h"
 
-class Interval {
+class Interval : public Updatable {
 public:
-    explicit Interval(
-            unsigned int duration,
-            std::function<void()> onFinished
-    ) : _duration(duration),
-        _onFinished(std::move(onFinished)) {};
-
     /**
-     * Update the internal interval.
-     */
-    void update(unsigned int delta);
-
-    /**
-     * Update the duration of the interval.
+     * Update the duration of the _interval.
      * @param duration
      */
-    void setDuration(unsigned int duration);
+    virtual void setDuration(unsigned int duration) = 0;
 
-    void reset();
+    virtual void reset() = 0;
 
-    unsigned int getDuration();
-
-private:
-    unsigned int _duration;
-    std::function<void()> _onFinished;
-    unsigned int _expiredTime = 0;
+    virtual unsigned int getDuration() = 0;
 };
-
 
 #endif //CUBE_ARDUINO_SDK_INTERVAL_H

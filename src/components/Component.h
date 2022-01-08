@@ -1,10 +1,9 @@
 #ifndef CUBE_ARDUINO_SDK_COMPONENT_H
 #define CUBE_ARDUINO_SDK_COMPONENT_H
 
-class Component {
+#include "Updatable.h"
 
-public:
-    virtual void update() = 0;
+class Component : public Updatable {
 };
 
 #endif //CUBE_ARDUINO_SDK_COMPONENT_H

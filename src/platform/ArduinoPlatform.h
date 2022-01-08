@@ -2,11 +2,19 @@
 #define CUBE_ARDUINO_SDK_ARDUINOPLATFORM_H
 
 #include "Platform.h"
-#include "Arduino.h"
 
-// https://community.platformio.org/t/nrf52832-include-set-breaks-compilation-on-platformio-but-compiles-fine-on-arduinoide/12237/2
-#undef min
-#undef max
+extern int digitalRead(int pin);
+
+extern void digitalWrite(int pin, int value);
+
+extern void pinMode(int pin, int mode);
+
+extern int millis();
+
+extern int analogRead(int pin);
+
+extern void analogWrite(int pin, int value);
+
 
 class ArduinoPlatform : public Platform {
 public:
@@ -23,10 +31,6 @@ public:
     int AnalogRead(int pin) override;
 
     void AnalogWrite(int pin, int value) override;
-
-    void PrintLn(const char *value) override;
-
-    void PrintLn(int value) override;
 };
 
 

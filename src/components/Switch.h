@@ -9,16 +9,16 @@
 class Switch : public Component {
 
 public:
-    explicit Switch(Platform *platform, int pin, std::function<void(bool)> onToggle = [](bool) {})
+    explicit Switch(Platform *platform, int pin, std::function<void(bool)> onToggle)
             : _platform(platform),
               _pin(pin),
               _onToggle(std::move(onToggle)) {
         platform->PinMode(_pin, INPUT_PULLUP);
     }
 
-    void update() override;
+    void update(unsigned int delta) override;
 
-    bool isOn();
+    bool isOn() const;
 
 private:
     Platform *_platform;

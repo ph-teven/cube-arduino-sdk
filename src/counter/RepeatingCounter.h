@@ -15,9 +15,9 @@ public:
     explicit RepeatingCounter(
             int start,
             int end,
-            std::function<void(int)> onChange = [](int) {},
-            std::function<void()> onRepeat = [] {},
-            int step = 1
+            unsigned int step,
+            std::function<void(int)> onChange,
+            std::function<void()> onRepeat
     ) :
             _onRepeat(std::move(onRepeat)),
             _onChange(std::move(onChange)),
@@ -42,7 +42,7 @@ private:
     std::function<void()> _onRepeat;
     std::function<void(int)> _onChange;
     int _current = 0;
-    int _step = 1;
+    unsigned int _step = 1;
     int _start;
     int _end;
 };

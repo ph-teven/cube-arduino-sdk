@@ -19,10 +19,6 @@ public:
 
     void AnalogWrite(int pin, int value) override;
 
-    void PrintLn(const char *value) override;
-
-    void PrintLn(int value) override;
-
     void setTime(int time);
 
 private:

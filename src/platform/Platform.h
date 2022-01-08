@@ -1,4 +1,3 @@
-
 #ifndef CUBE_ARDUINO_SDK_PLATFORM_H
 #define CUBE_ARDUINO_SDK_PLATFORM_H
 
@@ -29,10 +28,6 @@ public:
     virtual int AnalogRead(int pin) = 0;
 
     virtual void AnalogWrite(int pin, int value) = 0;
-
-    virtual void PrintLn(const char *value) = 0;
-
-    virtual void PrintLn(int numb) = 0;
 
     static long Map(long x, long in_min, long in_max, long out_min, long out_max) {
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;

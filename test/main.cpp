@@ -1,14 +1,21 @@
-#include <unity.h>
+#include "External.h"
 #include "CubeArduino.h"
-#include "../../.pio/libdeps/native/ArduinoFake/src/Arduino.h"
+#include "gtest/gtest.h"
 
-void test_UpDownCounter() {
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+
+    return RUN_ALL_TESTS();
+}
+
+TEST(CubeArduino, UpDownRepeatingCounterTest) {
     bool finished = false;
     int foo = -1;
 
     auto counter = new UpDownRepeatingCounter(
             0,
             3,
+            1,
             [&foo](int value) {
                 foo = value;
             },
@@ -17,58 +24,60 @@ void test_UpDownCounter() {
             }
     );
 
-    TEST_ASSERT_EQUAL(0, counter->getValue());
+    EXPECT_EQ(0, counter->getValue());
 
     counter->increment();
     counter->increment();
     counter->increment();
-    TEST_ASSERT_EQUAL(3, counter->getValue());
-    TEST_ASSERT_EQUAL(3, foo);
+    EXPECT_EQ(3, counter->getValue());
+    EXPECT_EQ(3, foo);
 
     counter->increment();
     counter->increment();
     counter->increment();
-    TEST_ASSERT_EQUAL(0, counter->getValue());
-    TEST_ASSERT_EQUAL(0, foo);
+    EXPECT_EQ(0, counter->getValue());
+    EXPECT_EQ(0, foo);
 
-    TEST_ASSERT_TRUE(finished);
+    EXPECT_TRUE(finished);
 }
 
-void test_encoder() {
+TEST(CubeArduino, EncoderTest) {
     int pinClk = 1;
     int pinDt = 2;
     int pinSw = 3;
 
     auto platform = new TestPlatform();
+    auto delta = new Delta(platform);
 
     int pressedCount = false;
 
     auto encoder = new Encoder(
-            EncoderPins{pinClk, pinDt, pinSw},
             platform,
+            EncoderPins{pinClk, pinDt, pinSw},
             Range{0, 255},
             0,
             1,
-            [](int value) {
-            },
+            [](int value) {},
             [&pressedCount](int value) {
                 pressedCount++;
             }
     );
 
     platform->DigitalWrite(pinSw, HIGH);
-    encoder->update();
+    encoder->update(delta->update());
 
     platform->DigitalWrite(pinSw, LOW);
-    encoder->update();
+    encoder->update(delta->update());
 
-    TEST_ASSERT_EQUAL(1, pressedCount);
+    EXPECT_EQ(1, pressedCount);
 }
 
-void test_button() {
+TEST(CubeArduino, ButtonTest) {
     int pin = 1;
 
     Platform *platform = new TestPlatform();
+    auto delta = new Delta(platform);
+
     platform->DigitalWrite(pin, HIGH);
 
     bool pressed = false;
@@ -77,14 +86,15 @@ void test_button() {
         pressed = true;
     });
 
-    button->update();
-    TEST_ASSERT_TRUE(pressed)
+    button->update(delta->update());
+    EXPECT_TRUE(pressed);
 }
 
-void test_poti() {
+TEST(CubeArduino, PotiTest) {
     int pin = 1;
 
-    auto platform = new TestPlatform();
+    Platform *platform = new TestPlatform();
+    auto delta = new Delta(platform);
     int analogValue = 542;
     platform->AnalogWrite(pin, analogValue);
 
@@ -94,81 +104,64 @@ void test_poti() {
         foo = value;
     });
 
-    TEST_ASSERT_EQUAL(135, poti->getValue());
+    EXPECT_EQ(135, poti->getValue());
 
     platform->AnalogWrite(pin, analogValue + 100);
 
     for (int i = 0; i < 100; i++) {
-        poti->update();
+        poti->update(delta->update());
     }
 
-    TEST_ASSERT_EQUAL(160, foo);
+    EXPECT_EQ(160, foo);
 }
 
-void test_interval() {
+TEST(CubeArduino, BasicIntervalTest) {
     bool finished = false;
 
-    auto interval = new Interval(10, [&finished]() {
+    auto interval = new BasicInterval(10, [&finished]() {
         finished = true;
     });
 
-    TEST_ASSERT_EQUAL(10, interval->getDuration());
+    EXPECT_EQ(10, interval->getDuration());
     interval->update(11);
-    TEST_ASSERT_TRUE(finished)
+    EXPECT_TRUE(finished);
 }
 
-void test_delta() {
+TEST(CubeArduino, DeltaTest) {
     auto platform = new TestPlatform();
     auto delta = new Delta(platform);
 
-    TEST_ASSERT_EQUAL(0, delta->update());
+    EXPECT_EQ(0, delta->update());
     platform->setTime(50);
-    TEST_ASSERT_EQUAL(50, delta->update());
+    EXPECT_EQ(50, delta->update());
 }
 
-void test_repeating_counter() {
+TEST(CubeArduino, RepeatingCounterTest) {
     bool finished = false;
     int foo = -1;
 
     auto counter = new RepeatingCounter(
             0,
             4,
+            1,
             [&foo](int value) {
                 foo = value;
             },
             [&finished]() {
                 finished = true;
-            },
-            1
+            }
     );
 
-    TEST_ASSERT_EQUAL(0, counter->getValue());
+    EXPECT_EQ(0, counter->getValue());
 
     counter->increment();
     counter->increment();
     counter->increment();
-    TEST_ASSERT_EQUAL(3, counter->getValue());
-    TEST_ASSERT_EQUAL(3, foo);
+    EXPECT_EQ(3, counter->getValue());
+    EXPECT_EQ(3, foo);
 
     counter->increment();
-    TEST_ASSERT_TRUE(finished);
-    TEST_ASSERT_EQUAL(0, counter->getValue());
+    EXPECT_TRUE(finished);
+    EXPECT_EQ(0, counter->getValue());
 }
 
-void setUp(void) {
-    ArduinoFakeReset();
-}
-
-int main(int argc, char **argv) {
-    UNITY_BEGIN();
-
-    RUN_TEST(test_UpDownCounter);
-    RUN_TEST(test_encoder);
-    RUN_TEST(test_poti);
-    RUN_TEST(test_button);
-    RUN_TEST(test_interval);
-    RUN_TEST(test_delta);
-    RUN_TEST(test_repeating_counter);
-
-    return UNITY_END();
-}

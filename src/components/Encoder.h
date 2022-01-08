@@ -19,17 +19,17 @@ class Encoder : public Component {
 
 public:
     explicit Encoder(
-            EncoderPins pins,
             Platform *platform,
+            EncoderPins pins,
             Range range,
-            int value = 0,
-            int step = 1,
-            std::function<void(int)> onChange = [](int) {},
-            std::function<void(int)> onPressed = [](int) {}
+            int startValue,
+            int step,
+            std::function<void(int)> onChange,
+            std::function<void(int)> onPressed
     ) : _pins(pins),
         _platform(platform),
         _range(range),
-        _value(value),
+        _value(startValue),
         _step(step),
         _onChange(std::move(onChange)),
         _onPressed(std::move(onPressed)) {
@@ -42,9 +42,9 @@ public:
         _pressed = _platform->DigitalRead(pins.sw) == LOW;
     };
 
-    void update() override;
+    void update(unsigned int delta) override;
 
-    int getValue();
+    int getValue() const;
 
     void setValue(int value);
 

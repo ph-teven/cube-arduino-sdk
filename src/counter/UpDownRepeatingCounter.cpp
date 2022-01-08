@@ -1,15 +1,14 @@
 #include "UpDownRepeatingCounter.h"
 
 void UpDownRepeatingCounter::increment() {
-    // 0 1 2 3 2 1 0
     if (_countingUp) {
-        _current += 1;
+        _current += _step;
 
         if (_current == _end) {
             _countingUp = !_countingUp;
         }
     } else {
-        _current -= 1;
+        _current -= _step;
 
         if (_current == _start) {
             _countingUp = !_countingUp;
@@ -34,8 +33,9 @@ int UpDownRepeatingCounter::getEnd() {
 }
 
 int UpDownRepeatingCounter::getStep() {
-    return 1;
+    return _step;
 }
 
 void UpDownRepeatingCounter::setStep(int step) {
+    _step = step;
 }

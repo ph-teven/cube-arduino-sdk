@@ -1,4 +1,3 @@
-#include <cstdio>
 #include "TestPlatform.h"
 
 TestPlatform::TestPlatform() = default;
@@ -39,12 +38,4 @@ int TestPlatform::AnalogRead(int pin) {
 
 void TestPlatform::AnalogWrite(int pin, int value) {
     _analogValues[pin] = value;
-}
-
-void TestPlatform::PrintLn(const char *value) {
-    std::printf("%s\n", value);
-}
-
-void TestPlatform::PrintLn(int value) {
-    std::printf("%d\n", value);
 }

@@ -1,6 +1,6 @@
 #include "Switch.h"
 
-void Switch::update() {
+void Switch::update(unsigned int delta) {
     bool on = _platform->DigitalRead(_pin) == HIGH;
 
     if (on != _on) {
@@ -10,6 +10,6 @@ void Switch::update() {
     _on = on;
 }
 
-bool Switch::isOn() {
+bool Switch::isOn() const {
     return _on;
 }

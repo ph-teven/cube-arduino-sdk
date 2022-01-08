@@ -1,6 +1,6 @@
 #include "Button.h"
 
-void Button::update() {
+void Button::update(unsigned int delta) {
     bool pressed = _platform->DigitalRead(_pin) == LOW;
 
     if (!_pressed && pressed) {

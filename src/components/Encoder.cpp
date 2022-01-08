@@ -1,7 +1,7 @@
 #include <algorithm>
 #include "Encoder.h"
 
-void Encoder::update() {
+void Encoder::update(unsigned int delta) {
     int clk = _platform->DigitalRead(_pins.clk);
 
     bool clkChanged = clk != _clk;
@@ -35,7 +35,7 @@ void Encoder::update() {
     _pressed = pressed;
 }
 
-int Encoder::getValue() {
+int Encoder::getValue() const {
     return _value;
 }
 
