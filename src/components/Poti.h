@@ -11,7 +11,7 @@ const auto range10Bit = Range{0, 1023};
 
 class Poti : public Component {
 public:
-    explicit Poti(Platform *platform, int pin, Range range, std::function<void(int)> onChanged) :
+    explicit Poti(Platform *platform, int pin, Range range, std::function<void(int)> onChanged = [](int) {}) :
             _platform(platform),
             _onChanged(std::move(onChanged)),
             _pin(pin),

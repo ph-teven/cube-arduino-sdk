@@ -9,7 +9,7 @@
 class Switch : public Component {
 
 public:
-    explicit Switch(Platform *platform, int pin, std::function<void(bool)> onToggle)
+    explicit Switch(Platform *platform, int pin, std::function<void(bool)> onToggle = [](bool) {})
             : _platform(platform),
               _pin(pin),
               _onToggle(std::move(onToggle)) {

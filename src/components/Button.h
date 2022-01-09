@@ -9,7 +9,11 @@
 class Button : public Component {
 
 public:
-    explicit Button(Platform *platform, int pin, std::function<void()> onPressed)
+    explicit Button(
+            Platform *platform,
+            int pin,
+            std::function<void()> onPressed = [] {}
+    )
             : _platform(platform),
               _pin(pin),
               _onPressed(std::move(onPressed)) {

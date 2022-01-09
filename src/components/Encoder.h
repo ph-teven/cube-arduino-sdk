@@ -23,9 +23,9 @@ public:
             EncoderPins pins,
             Range range,
             int startValue,
-            int step,
-            std::function<void(int)> onChange,
-            std::function<void(int)> onPressed
+            int step = 1,
+            std::function<void(int)> onChange = [](int) {},
+            std::function<void(int)> onPressed = [](int) {}
     ) : _pins(pins),
         _platform(platform),
         _range(range),

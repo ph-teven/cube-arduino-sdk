@@ -1,7 +1,7 @@
 #ifndef CUBE_ARDUINO_SDK_TESTPLATFORM_H
 #define CUBE_ARDUINO_SDK_TESTPLATFORM_H
 
-#include "platform/Platform.h"
+#include "Platform.h"
 
 class TestPlatform : public Platform {
 public:

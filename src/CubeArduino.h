@@ -17,6 +17,7 @@
 #include "interval-counter/UpDownRepeatingIntervalCounter.h"
 
 #include "platform/ArduinoPlatform.h"
+#include "platform/TestPlatform.h"
 
 #include "Delta.h"
 #include "ValueRange.h"

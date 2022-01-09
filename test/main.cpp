@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include "External.h"
 #include "CubeArduino.h"
 
 int main(int argc, char **argv) {
@@ -164,4 +163,3 @@ TEST(CubeArduino, RepeatingCounterTest) {
     EXPECT_TRUE(finished);
     EXPECT_EQ(0, counter->getValue());
 }
-
