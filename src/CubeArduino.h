@@ -2,6 +2,7 @@
 #define CUBE_ARDUINO_SDK_CUBEARDUINO_H
 
 #include "components/Button.h"
+#include "components/ToggleButton.h"
 #include "components/Encoder.h"
 #include "components/Poti.h"
 #include "components/Switch.h"
@@ -22,5 +23,7 @@
 
 #include "Delta.h"
 #include "ValueRange.h"
+
+#include "utils.h"
 
 #endif //CUBE_ARDUINO_SDK_CUBEARDUINO_H

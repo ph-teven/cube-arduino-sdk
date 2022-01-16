@@ -17,10 +17,18 @@ public:
             : _platform(platform),
               _pin(pin),
               _onPressed(std::move(onPressed)) {
-        _platform->PinMode(_pin, INPUT_PULLUP);
+        _platform->pinMode(_pin, INPUT_PULLUP);
     }
 
-    void update(unsigned int delta) override;
+    void update(unsigned int delta) override {
+        bool pressed = _platform->digitalRead(_pin) == LOW;
+
+        if (!_pressed && pressed) {
+            _onPressed();
+        }
+
+        _pressed = pressed;
+    }
 
 private:
     Platform *_platform;

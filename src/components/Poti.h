@@ -6,6 +6,7 @@
 #include "platform/Platform.h"
 #include "ValueRange.h"
 #include "Component.h"
+#include "utils.h"
 
 const auto range10Bit = Range{0, 1023};
 
@@ -17,13 +18,27 @@ public:
             _pin(pin),
             _range(range) {
 
-        _value = _platform->AnalogRead(_pin);
-        _mappedValue = Platform::Map(_value, range10Bit.min, range10Bit.max, _range.min, _range.max);
+        _value = _platform->analogRead(_pin);
+        _mappedValue = (int) cube::map(_value, range10Bit.min, range10Bit.max, _range.min, _range.max);
     }
 
-    int getValue() const;
+    int getValue() const {
+        return _mappedValue;
+    }
 
-    void update(unsigned int delta) override;
+    void update(unsigned int delta) override {
+        // Take 0.6 of the new value and add it to 0.4 of the old value.
+        auto newValue = (4 * _value + 6 * _platform->analogRead(_pin)) / 10;
+        auto newMappedValue = (int) cube::map(newValue, range10Bit.min, range10Bit.max, _range.min, _range.max);
+
+        if (newMappedValue != _mappedValue) {
+            _value = newValue;
+            _mappedValue = newMappedValue;
+
+            _onChanged(_mappedValue);
+        }
+    }
+
 
 private:
     Platform *_platform;

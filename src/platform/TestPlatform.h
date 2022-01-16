@@ -7,17 +7,17 @@ class TestPlatform : public Platform {
 public:
     explicit TestPlatform();
 
-    unsigned long Millis() override;
+    unsigned long millis() override;
 
-    void PinMode(unsigned char pin, unsigned char mode) override;
+    void pinMode(unsigned char pin, unsigned char mode) override;
 
-    int DigitalRead(unsigned char pin) override;
+    int digitalRead(unsigned char pin) override;
 
-    void DigitalWrite(unsigned char pin, unsigned char value) override;
+    void digitalWrite(unsigned char pin, unsigned char value) override;
 
-    int AnalogRead(unsigned char pin) override;
+    int analogRead(unsigned char pin) override;
 
-    void AnalogWrite(unsigned char pin, int value) override;
+    void analogWrite(unsigned char pin, int value) override;
 
     void setTime(int time);
 

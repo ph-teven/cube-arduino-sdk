@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "CubeArduino.h"
+#include "components/ToggleButton.h"
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
@@ -62,10 +63,10 @@ TEST(CubeArduino, EncoderTest) {
             }
     );
 
-    platform->DigitalWrite(pinSw, HIGH);
+    platform->digitalWrite(pinSw, HIGH);
     encoder->update(delta->update());
 
-    platform->DigitalWrite(pinSw, LOW);
+    platform->digitalWrite(pinSw, LOW);
     encoder->update(delta->update());
 
     EXPECT_EQ(1, pressedCount);
@@ -77,7 +78,7 @@ TEST(CubeArduino, ButtonTest) {
     Platform *platform = new TestPlatform();
     auto delta = new Delta(platform);
 
-    platform->DigitalWrite(pin, HIGH);
+    platform->digitalWrite(pin, HIGH);
 
     bool pressed = false;
 
@@ -95,7 +96,7 @@ TEST(CubeArduino, PotiTest) {
     Platform *platform = new TestPlatform();
     auto delta = new Delta(platform);
     int analogValue = 542;
-    platform->AnalogWrite(pin, analogValue);
+    platform->analogWrite(pin, analogValue);
 
     int foo = -1;
 
@@ -105,7 +106,7 @@ TEST(CubeArduino, PotiTest) {
 
     EXPECT_EQ(135, poti->getValue());
 
-    platform->AnalogWrite(pin, analogValue + 100);
+    platform->analogWrite(pin, analogValue + 100);
 
     for (int i = 0; i < 100; i++) {
         poti->update(delta->update());
@@ -162,4 +163,29 @@ TEST(CubeArduino, RepeatingCounterTest) {
     counter->increment();
     EXPECT_TRUE(finished);
     EXPECT_EQ(0, counter->getValue());
+}
+
+TEST(CubeArduino, ToggleButtonTest) {
+    int pin = 1;
+
+    Platform *platform = new TestPlatform();
+    auto delta = new Delta(platform);
+
+    platform->digitalWrite(pin, HIGH);
+
+    bool toggled = false;
+
+    auto *button = new ToggleButton(platform, pin, [&toggled](bool isToggled) {
+        toggled = isToggled;
+    });
+
+    button->update(delta->update());
+    EXPECT_TRUE(toggled);
+
+    platform->digitalWrite(pin, LOW);
+    button->update(delta->update());
+
+    platform->digitalWrite(pin, HIGH);
+    button->update(delta->update());
+    EXPECT_FALSE(toggled);
 }

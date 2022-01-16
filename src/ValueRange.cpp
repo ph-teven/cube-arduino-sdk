@@ -1,13 +1,14 @@
 #include "ValueRange.h"
+#include "utils.h"
 
-int ValueRange::map(Range out) {
-    return Platform::Map(_value, _range.min, _range.max, out.min, out.max);
+long ValueRange::map(Range out) const {
+    return cube::map(_value, _range.min, _range.max, out.min, out.max);
 }
 
-int ValueRange::value() {
+long ValueRange::value() const {
     return _value;
 }
 
-int ValueRange::map(int min, int max) {
+long ValueRange::map(long min, long max) const {
     return map(Range{min, max});
 }

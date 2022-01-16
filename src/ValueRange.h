@@ -1,25 +1,25 @@
-#include "platform/Platform.h"
-
 #ifndef CUBE_ARDUINO_SDK_VALUE_RANGE_H
 #define CUBE_ARDUINO_SDK_VALUE_RANGE_H
 
+#include "platform/Platform.h"
+
 struct Range {
-    int min;
-    int max;
+    long min;
+    long max;
 };
 
 class ValueRange {
 public:
-    explicit ValueRange(int value = 0, Range range = {0, 0}) : _value(value), _range(range) {}
+    explicit ValueRange(long value = 0, Range range = {(long) 0, (long) 0}) : _value(value), _range(range) {}
 
-    int map(Range out);
+    long map(Range out) const;
 
-    int map(int min, int max);
+    long map(long min, long max) const;
 
-    int value();
+    long value() const;
 
 private:
-    int _value;
+    long _value;
     Range _range;
 };
 

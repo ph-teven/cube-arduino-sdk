@@ -6,7 +6,7 @@
 class Delta {
 public:
     explicit Delta(Platform *platform) : _platform(platform) {
-        _lastUpdate = _platform->Millis();
+        _lastUpdate = _platform->millis();
     };
 
     unsigned int update();

@@ -13,12 +13,22 @@ public:
             : _platform(platform),
               _pin(pin),
               _onToggle(std::move(onToggle)) {
-        platform->PinMode(_pin, INPUT_PULLUP);
+        platform->pinMode(_pin, INPUT_PULLUP);
     }
 
-    void update(unsigned int delta) override;
+    void update(unsigned int delta) override  {
+        bool on = _platform->digitalRead(_pin) == HIGH;
 
-    bool isOn() const;
+        if (on != _on) {
+            _onToggle(on);
+        }
+
+        _on = on;
+    }
+
+    bool isOn() const {
+        return _on;
+    }
 
 private:
     Platform *_platform;
