@@ -16,10 +16,10 @@ public:
      */
     explicit RepeatingIntervalCounter(
             unsigned int duration,
-            int start,
-            int end,
-            unsigned int step = 1,
-            std::function<void(int)> onChange = [](int) {},
+            long start,
+            long end,
+            unsigned long step = 1,
+            std::function<void(long)> onChange = [](long) {},
             std::function<void()> onRepeat = [] {}
     ) : IntervalCounter(
             new RepeatingCounter(

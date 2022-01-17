@@ -13,10 +13,10 @@ public:
      * @param end Exclusive
      */
     explicit RepeatingCounter(
-            int start,
-            int end,
-            unsigned int step = 1,
-            std::function<void(int)> onChange = [](int) {},
+            long start,
+            long end,
+            unsigned long step = 1,
+            std::function<void(long)> onChange = [](long) {},
             std::function<void()> onRepeat = [] {}
     ) :
             _onRepeat(std::move(onRepeat)),
@@ -28,23 +28,23 @@ public:
 
     void increment() override;
 
-    int getValue() override;
+    long getValue() override;
 
-    void setValue(int value) override;
+    void setValue(long value) override;
 
-    int getStep() override;
+    unsigned long getStep() override;
 
-    int getEnd() override;
+    long getEnd() override;
 
-    void setStep(int step) override;
+    void setStep(unsigned long step) override;
 
 private:
     std::function<void()> _onRepeat;
-    std::function<void(int)> _onChange;
-    int _current = 0;
-    unsigned int _step = 1;
-    int _start;
-    int _end;
+    std::function<void(long)> _onChange;
+    long _current = 0;
+    unsigned long _step = 1;
+    long _start;
+    long _end;
 };
 
 

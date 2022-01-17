@@ -1,6 +1,6 @@
 #include "BasicInterval.h"
 
-void BasicInterval::update(unsigned int delta) {
+void BasicInterval::update(unsigned long delta) {
     _expiredTime += delta;
 
     bool expired = _expiredTime > _duration;
@@ -11,7 +11,7 @@ void BasicInterval::update(unsigned int delta) {
     }
 }
 
-void BasicInterval::setDuration(unsigned int duration) {
+void BasicInterval::setDuration(unsigned long duration) {
     if (_duration == duration) {
         return;
     }
@@ -19,7 +19,7 @@ void BasicInterval::setDuration(unsigned int duration) {
     _duration = duration;
 }
 
-unsigned int BasicInterval::getDuration() {
+unsigned long BasicInterval::getDuration() {
     return _duration;
 }
 

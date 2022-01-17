@@ -8,12 +8,6 @@
 #define OUTPUT 0x1
 #define INPUT_PULLUP 0x2
 
-template<class T, class L>
-auto min(const T &a, const L &b) -> decltype((b < a) ? b : a) { return (b < a) ? b : a; }
-
-template<class T, class L>
-auto max(const T &a, const L &b) -> decltype((b < a) ? b : a) { return (a < b) ? b : a; }
-
 class Platform {
 
 public:

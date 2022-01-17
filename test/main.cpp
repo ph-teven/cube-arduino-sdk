@@ -57,8 +57,8 @@ TEST(CubeArduino, EncoderTest) {
             Range{0, 255},
             0,
             1,
-            [](int value) {},
-            [&pressedCount](int value) {
+            [](long value) {},
+            [&pressedCount](long value) {
                 pressedCount++;
             }
     );
@@ -138,13 +138,13 @@ TEST(CubeArduino, DeltaTest) {
 
 TEST(CubeArduino, RepeatingCounterTest) {
     bool finished = false;
-    int foo = -1;
+    long foo = -1;
 
     auto counter = new RepeatingCounter(
             0,
             4,
             1,
-            [&foo](int value) {
+            [&foo](long value) {
                 foo = value;
             },
             [&finished]() {

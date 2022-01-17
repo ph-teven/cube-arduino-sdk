@@ -8,11 +8,11 @@ class IntervalCounter : public Interval, public Counter {
 public:
     explicit IntervalCounter(Counter *counter, BasicInterval *interval) : _counter(counter), _interval(interval) {}
 
-    void update(unsigned int delta) override {
+    void update(unsigned long delta) override {
         this->_interval->update(delta);
     }
 
-    void setDuration(unsigned int duration) override {
+    void setDuration(unsigned long duration) override {
         this->_interval->setDuration(duration);
     }
 
@@ -20,7 +20,7 @@ public:
         this->_interval->reset();
     }
 
-    unsigned int getDuration() override {
+    unsigned long getDuration() override {
         return this->_interval->getDuration();
     }
 
@@ -28,23 +28,23 @@ public:
         this->_counter->increment();
     }
 
-    int getValue() override {
+    long getValue() override {
         return this->_counter->getValue();
     }
 
-    void setValue(int value) override {
+    void setValue(long value) override {
         this->_counter->setValue(value);
     }
 
-    int getStep() override {
+    unsigned long getStep() override {
         return this->_counter->getStep();
     }
 
-    int getEnd() override {
+    long getEnd() override {
         return this->_counter->getEnd();
     }
 
-    void setStep(int step) override {
+    void setStep(unsigned long step) override {
         this->_counter->setStep(step);
     }
 

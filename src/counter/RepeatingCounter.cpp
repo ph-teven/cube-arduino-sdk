@@ -11,23 +11,23 @@ void RepeatingCounter::increment() {
     _onChange(_current);
 }
 
-int RepeatingCounter::getValue() {
+long RepeatingCounter::getValue() {
     return _current;
 }
 
-void RepeatingCounter::setValue(int value) {
+void RepeatingCounter::setValue(long value) {
     _current = value;
     _onChange(_current);
 }
 
-void RepeatingCounter::setStep(int step) {
+void RepeatingCounter::setStep(unsigned long step) {
     _step = step;
 }
 
-int RepeatingCounter::getStep() {
+unsigned long RepeatingCounter::getStep() {
     return _step;
 }
 
-int RepeatingCounter::getEnd() {
+long RepeatingCounter::getEnd() {
     return _end;
 }

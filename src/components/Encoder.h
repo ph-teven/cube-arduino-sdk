@@ -5,6 +5,7 @@
 #include <utility>
 #include "platform/Platform.h"
 #include "ValueRange.h"
+#include "utils.h"
 #include "Component.h"
 
 // TODO should have min/max and internal state
@@ -22,10 +23,10 @@ public:
             Platform *platform,
             EncoderPins pins,
             Range range,
-            int startValue,
-            int step = 1,
-            std::function<void(int)> onChange = [](int) {},
-            std::function<void(int)> onPressed = [](int) {}
+            long startValue,
+            unsigned long step = 1,
+            std::function<void(long)> onChange = [](long) {},
+            std::function<void(long)> onPressed = [](long) {}
     ) : _pins(pins),
         _platform(platform),
         _range(range),
@@ -42,7 +43,7 @@ public:
         _pressed = _platform->digitalRead(pins.sw) == LOW;
     };
 
-    void update(unsigned int delta) override {
+    void update(unsigned long delta) override {
         int clk = _platform->digitalRead(_pins.clk);
 
         bool clkChanged = clk != _clk;
@@ -57,8 +58,8 @@ public:
                 value -= _step;
             }
 
-            value = std::min(value, _range.max);
-            value = std::max(value, _range.min);
+            value = cube::min(value, _range.max);
+            value = cube::max(value, _range.min);
 
             if (value != _value) {
                 _value = value;
@@ -81,8 +82,8 @@ public:
     }
 
     void setValue(long value) {
-        value = min(value, _range.max);
-        value = max(value, _range.min);
+        value = cube::min(value, _range.max);
+        value = cube::max(value, _range.min);
 
         _value = value;
     }

@@ -3,7 +3,7 @@
 
 class Updatable {
 public:
-    virtual void update(unsigned int delta) = 0;
+    virtual void update(unsigned long delta) = 0;
 };
 
 #endif //CUBE_ARDUINO_SDK_UPDATABLE_H

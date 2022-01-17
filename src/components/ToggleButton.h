@@ -19,7 +19,7 @@ public:
         _platform->pinMode(_pin, INPUT_PULLUP);
     }
 
-    void update(unsigned int delta) override {
+    void update(unsigned long delta) override {
         bool pressed = _platform->digitalRead(_pin) == LOW;
 
         if (!_lastPressed && pressed) { // value changed

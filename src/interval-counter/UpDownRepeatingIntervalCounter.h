@@ -15,11 +15,11 @@ public:
      * @param end Exclusive
      */
     explicit UpDownRepeatingIntervalCounter(
-            unsigned int duration,
-            int start,
-            int end,
-            unsigned int step = 1,
-            std::function<void(int)> onChange = [](int) {},
+            unsigned long duration,
+            long start,
+            long end,
+            unsigned long step = 1,
+            std::function<void(long)> onChange = [](long) {},
             std::function<void()> onRepeat = [] {}
     ) : IntervalCounter(
             new UpDownRepeatingCounter(

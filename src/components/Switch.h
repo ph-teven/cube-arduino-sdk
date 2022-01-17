@@ -16,7 +16,7 @@ public:
         platform->pinMode(_pin, INPUT_PULLUP);
     }
 
-    void update(unsigned int delta) override  {
+    void update(unsigned long delta) override  {
         bool on = _platform->digitalRead(_pin) == HIGH;
 
         if (on != _on) {

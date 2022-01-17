@@ -19,23 +19,23 @@ void UpDownRepeatingCounter::increment() {
     _onChange(_current);
 }
 
-int UpDownRepeatingCounter::getValue() {
+long UpDownRepeatingCounter::getValue() {
     return _current;
 }
 
-void UpDownRepeatingCounter::setValue(int value) {
+void UpDownRepeatingCounter::setValue(long value) {
     _current = value;
     _onChange(_current);
 }
 
-int UpDownRepeatingCounter::getEnd() {
+long UpDownRepeatingCounter::getEnd() {
     return _end;
 }
 
-int UpDownRepeatingCounter::getStep() {
+unsigned long UpDownRepeatingCounter::getStep() {
     return _step;
 }
 
-void UpDownRepeatingCounter::setStep(int step) {
+void UpDownRepeatingCounter::setStep(unsigned long step) {
     _step = step;
 }

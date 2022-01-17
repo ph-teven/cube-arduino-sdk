@@ -26,7 +26,7 @@ public:
         return _mappedValue;
     }
 
-    void update(unsigned int delta) override {
+    void update(unsigned long delta) override {
         // Take 0.6 of the new value and add it to 0.4 of the old value.
         auto newValue = (4 * _value + 6 * _platform->analogRead(_pin)) / 10;
         auto newMappedValue = (int) cube::map(newValue, range10Bit.min, range10Bit.max, _range.min, _range.max);

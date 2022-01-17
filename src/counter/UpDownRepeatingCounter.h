@@ -14,10 +14,10 @@ public:
      * @param end Exclusive
      */
     explicit UpDownRepeatingCounter(
-            int start,
-            int end,
-            unsigned int step = 1,
-            std::function<void(int)> onChange = [](int) {},
+            long start,
+            long end,
+            unsigned long step = 1,
+            std::function<void(long)> onChange = [](long) {},
             std::function<void()> onRepeat = [] {}
     ) :
             _onRepeat(std::move(onRepeat)),
@@ -29,24 +29,24 @@ public:
 
     void increment() override;
 
-    int getValue() override;
+    long getValue() override;
 
-    void setValue(int value) override;
+    void setValue(long value) override;
 
-    int getEnd() override;
+    long getEnd() override;
 
-    int getStep() override;
+    unsigned long getStep() override;
 
-    void setStep(int step) override;
+    void setStep(unsigned long step) override;
 
 private:
     std::function<void()> _onRepeat;
-    std::function<void(int)> _onChange;
-    int _countingUp = true;
-    int _current = 0;
-    int _start;
-    int _end;
-    unsigned int _step;
+    std::function<void(long)> _onChange;
+    bool _countingUp = true;
+    long _current = 0;
+    long _start;
+    long _end;
+    unsigned long _step;
 };
 
 

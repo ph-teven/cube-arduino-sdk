@@ -6,15 +6,15 @@ class Counter {
 public:
     virtual void increment() = 0;
 
-    virtual int getValue() = 0;
+    virtual long getValue() = 0;
 
-    virtual void setValue(int value) = 0;
+    virtual void setValue(long value) = 0;
 
-    virtual int getStep() = 0;
+    virtual unsigned long getStep() = 0;
 
-    virtual int getEnd() = 0;
+    virtual long getEnd() = 0;
 
-    virtual void setStep(int step) = 0;
+    virtual void setStep(unsigned long step) = 0;
 };
 
 

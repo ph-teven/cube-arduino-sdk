@@ -15,17 +15,17 @@ public:
     /**
      * Update the internal _interval.
      */
-    void update(unsigned int delta) override;
+    void update(unsigned long delta) override;
 
     /**
      * Update the duration of the _interval.
      * @param duration
      */
-    void setDuration(unsigned int duration) override;
+    void setDuration(unsigned long duration) override;
 
     void reset() override;
 
-    unsigned int getDuration() override;
+    unsigned long getDuration() override;
 
 private:
     unsigned int _duration;
