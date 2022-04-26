@@ -6,10 +6,10 @@
 class Delta {
 public:
     explicit Delta(Platform *platform) : _platform(platform) {
-        _lastUpdate = _platform->millis();
+        _lastUpdate = _platform->Millis();
     };
 
-    unsigned int update();
+    unsigned long update();
 
 private:
     Platform *_platform;

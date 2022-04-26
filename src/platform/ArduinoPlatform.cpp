@@ -3,27 +3,26 @@
 
 ArduinoPlatform::ArduinoPlatform() = default;
 
-int ArduinoPlatform::digitalRead(unsigned char pin) {
+int ArduinoPlatform::DigitalRead(unsigned char pin) {
     return digitalRead(pin);
 }
 
-void ArduinoPlatform::digitalWrite(unsigned char pin, unsigned char value) {
+void ArduinoPlatform::DigitalWrite(unsigned char pin, unsigned char value) {
     digitalWrite(pin, value);
 }
 
-void ArduinoPlatform::pinMode(unsigned char pin, unsigned char mode) {
+void ArduinoPlatform::PinMode(unsigned char pin, unsigned char mode) {
     pinMode(pin, mode);
 }
 
-unsigned long ArduinoPlatform::millis() {
+unsigned long ArduinoPlatform::Millis() {
     return millis();
 }
 
-int ArduinoPlatform::analogRead(unsigned char pin) {
+int ArduinoPlatform::AnalogRead(unsigned char pin) {
     return analogRead(pin);
 }
 
-void ArduinoPlatform::analogWrite(unsigned char pin, int value) {
+void ArduinoPlatform::AnalogWrite(unsigned char pin, int value) {
     analogWrite(pin, value);
 }
-

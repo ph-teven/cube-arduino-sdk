@@ -63,10 +63,10 @@ TEST(CubeArduino, EncoderTest) {
             }
     );
 
-    platform->digitalWrite(pinSw, HIGH);
+    platform->DigitalWrite(pinSw, HIGH);
     encoder->update(delta->update());
 
-    platform->digitalWrite(pinSw, LOW);
+    platform->DigitalWrite(pinSw, LOW);
     encoder->update(delta->update());
 
     EXPECT_EQ(1, pressedCount);
@@ -78,7 +78,7 @@ TEST(CubeArduino, ButtonTest) {
     Platform *platform = new TestPlatform();
     auto delta = new Delta(platform);
 
-    platform->digitalWrite(pin, HIGH);
+    platform->DigitalWrite(pin, HIGH);
 
     bool pressed = false;
 
@@ -96,7 +96,7 @@ TEST(CubeArduino, PotiTest) {
     Platform *platform = new TestPlatform();
     auto delta = new Delta(platform);
     int analogValue = 542;
-    platform->analogWrite(pin, analogValue);
+    platform->AnalogWrite(pin, analogValue);
 
     int foo = -1;
 
@@ -106,7 +106,7 @@ TEST(CubeArduino, PotiTest) {
 
     EXPECT_EQ(135, poti->getValue());
 
-    platform->analogWrite(pin, analogValue + 100);
+    platform->AnalogWrite(pin, analogValue + 100);
 
     for (int i = 0; i < 100; i++) {
         poti->update(delta->update());
@@ -171,7 +171,7 @@ TEST(CubeArduino, ToggleButtonTest) {
     Platform *platform = new TestPlatform();
     auto delta = new Delta(platform);
 
-    platform->digitalWrite(pin, HIGH);
+    platform->DigitalWrite(pin, HIGH);
 
     bool toggled = false;
 
@@ -182,10 +182,10 @@ TEST(CubeArduino, ToggleButtonTest) {
     button->update(delta->update());
     EXPECT_TRUE(toggled);
 
-    platform->digitalWrite(pin, LOW);
+    platform->DigitalWrite(pin, LOW);
     button->update(delta->update());
 
-    platform->digitalWrite(pin, HIGH);
+    platform->DigitalWrite(pin, HIGH);
     button->update(delta->update());
     EXPECT_FALSE(toggled);
 }

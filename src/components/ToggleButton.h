@@ -16,11 +16,11 @@ public:
     ) : _platform(platform),
         _pin(pin),
         _onToggle(std::move(onToggle)) {
-        _platform->pinMode(_pin, INPUT_PULLUP);
+        _platform->PinMode(_pin, INPUT_PULLUP);
     }
 
     void update(unsigned long delta) override {
-        bool pressed = _platform->digitalRead(_pin) == LOW;
+        bool pressed = _platform->DigitalRead(_pin) == LOW;
 
         if (!_lastPressed && pressed) { // value changed
             _toggled = !_toggled;

@@ -35,21 +35,21 @@ public:
         _onChange(std::move(onChange)),
         _onPressed(std::move(onPressed)) {
 
-        _platform->pinMode(pins.clk, INPUT_PULLUP);
-        _platform->pinMode(pins.dt, INPUT_PULLUP);
-        _platform->pinMode(pins.sw, INPUT_PULLUP);
+        _platform->PinMode(pins.clk, INPUT_PULLUP);
+        _platform->PinMode(pins.dt, INPUT_PULLUP);
+        _platform->PinMode(pins.sw, INPUT_PULLUP);
 
-        _clk = _platform->digitalRead(pins.clk);
-        _pressed = _platform->digitalRead(pins.sw) == LOW;
+        _clk = _platform->DigitalRead(pins.clk);
+        _pressed = _platform->DigitalRead(pins.sw) == LOW;
     };
 
     void update(unsigned long delta) override {
-        int clk = _platform->digitalRead(_pins.clk);
+        int clk = _platform->DigitalRead(_pins.clk);
 
         bool clkChanged = clk != _clk;
 
         if (clkChanged) {
-            auto dt = _platform->digitalRead(_pins.dt);
+            auto dt = _platform->DigitalRead(_pins.dt);
             auto value = _value;
 
             if (dt != clk) {
@@ -67,7 +67,7 @@ public:
             }
         }
 
-        bool pressed = _platform->digitalRead(_pins.sw) == LOW;
+        bool pressed = _platform->DigitalRead(_pins.sw) == LOW;
 
         if (pressed && !_pressed) {
             _onPressed(_value);

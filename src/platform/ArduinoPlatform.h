@@ -7,17 +7,17 @@ class ArduinoPlatform : public Platform {
 public:
     explicit ArduinoPlatform();
 
-    unsigned long millis() override;
+    unsigned long Millis() override;
 
-    void pinMode(unsigned char pin, unsigned char mode) override;
+    void PinMode(unsigned char pin, unsigned char mode) override;
 
-    int digitalRead(unsigned char pin) override;
+    int DigitalRead(unsigned char pin) override;
 
-    void digitalWrite(unsigned char pin, unsigned char value) override;
+    void DigitalWrite(unsigned char pin, unsigned char value) override;
 
-    int analogRead(unsigned char pin) override;
+    int AnalogRead(unsigned char pin) override;
 
-    void analogWrite(unsigned char pin, int value) override;
+    void AnalogWrite(unsigned char pin, int value) override;
 };
 
 

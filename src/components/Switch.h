@@ -13,11 +13,11 @@ public:
             : _platform(platform),
               _pin(pin),
               _onToggle(std::move(onToggle)) {
-        platform->pinMode(_pin, INPUT_PULLUP);
+        platform->PinMode(_pin, INPUT_PULLUP);
     }
 
     void update(unsigned long delta) override  {
-        bool on = _platform->digitalRead(_pin) == HIGH;
+        bool on = _platform->DigitalRead(_pin) == HIGH;
 
         if (on != _on) {
             _onToggle(on);

@@ -11,17 +11,17 @@
 class Platform {
 
 public:
-    virtual unsigned long millis() = 0;
+    virtual unsigned long Millis() = 0;
 
-    virtual void pinMode(unsigned char pin, unsigned char mode) = 0;
+    virtual void PinMode(unsigned char pin, unsigned char mode) = 0;
 
-    virtual int digitalRead(unsigned char pin) = 0;
+    virtual int DigitalRead(unsigned char pin) = 0;
 
-    virtual void digitalWrite(unsigned char pin, unsigned char value) = 0;
+    virtual void DigitalWrite(unsigned char pin, unsigned char value) = 0;
 
-    virtual int analogRead(unsigned char pin) = 0;
+    virtual int AnalogRead(unsigned char pin) = 0;
 
-    virtual void analogWrite(unsigned char pin, int value) = 0;
+    virtual void AnalogWrite(unsigned char pin, int value) = 0;
 };
 
 #endif //CUBE_ARDUINO_SDK_PLATFORM_H

@@ -1,12 +1,10 @@
 #include "Delta.h"
 
-unsigned int Delta::update() {
-    unsigned int now = _platform->millis();
-    unsigned int delta = now - _lastUpdate;
+unsigned long Delta::update() {
+    auto now = _platform->Millis();
+    auto delta = now - _lastUpdate;
 
     _lastUpdate = now;
 
     return delta;
 }
-
-
